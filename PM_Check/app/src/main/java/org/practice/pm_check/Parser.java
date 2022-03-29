@@ -4,6 +4,10 @@ public class Parser {
     static AirPollution ParseData(String str){
         AirPollution data = new AirPollution();
 
+        if(!str.contains("<item>")){
+            return null;
+        }
+
         str = str.substring(0, str.indexOf("</item>"));
 
         if(str.contains("<item>")){
@@ -102,7 +106,7 @@ public class Parser {
         String result = "";
 
         if(data == null){
-            result = "오류";
+            result = "측정소 정보가 없습니다";
             return result;
         }
 
