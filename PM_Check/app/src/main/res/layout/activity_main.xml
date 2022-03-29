@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:text="검색"
             android:textSize="12sp"
-            android:onClick="mOnClick"/>
+            android:onClick="mOnClickSearch"/>
 
     </LinearLayout>
 

@@ -6,38 +6,28 @@ import android.content.ContentValues;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.CertificateFactory;
-import java.util.stream.Collectors;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManagerFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView pm_status;
+    private TextView pm_status_;
+    private EditText station_name_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        station_name_= (EditText)findViewById(R.id.location);
+        pm_status_ = (TextView)findViewById(R.id.pm_status);
+    }
 
-        pm_status = (TextView)findViewById(R.id.pm_status);
-
+    public void mOnClickSearch(View v){
         String service_key = "1eNVUOhrQ5%2FHZVz73nAYuNVJbG03WSt96DzlwXi0zkbWp45Lj1U1lO8giZWCS1gza6rlErvJGWfDBDMPR0x4Pg%3D%3D";
-        String station_name = "강남구";
+        String station_name = station_name_.getText().toString();
         String data_term = "month";
         String page_no = "1";
         String num_of_rows = "100";
@@ -52,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         NetworkTask networkTask = new NetworkTask(url, null);
         networkTask.execute();
-
-
     }
-
 
 
     public class NetworkTask extends AsyncTask<Void, Void, String> {
@@ -66,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             this.url_ = url;
             this.values_ = values;
         }
+
         @Override
         protected String doInBackground(Void... params){
             String result;
@@ -80,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
 
-            pm_status.setText(s);
+            pm_status_.setText(s);
             Log.d("onPostEx", "출력 값 : " + s);
         }
     }
