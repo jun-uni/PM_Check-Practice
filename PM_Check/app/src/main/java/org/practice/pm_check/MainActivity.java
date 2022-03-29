@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView pm_status_;
@@ -68,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
 
-            pm_status_.setText(s);
+            AirPollution data = Parser.ParseData(s);
+            String result = Parser.OutputFormat(data);
+
+            pm_status_.setText(result);
             Log.d("onPostEx", "출력 값 : " + s);
         }
     }
