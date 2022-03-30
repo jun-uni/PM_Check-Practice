@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s){
             super.onPostExecute(s);
 
-            AirPollution data = Parser.ParseData(s);
-            String result = Parser.OutputFormat(data);
+            AirPollution data = MyParser.ParseData(s);
+            String result = MyParser.OutputFormat(data);
 
             pm_status_.setText(result);
             Log.d("onPostEx", "출력 값 : " + s);

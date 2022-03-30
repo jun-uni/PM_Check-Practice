@@ -1,6 +1,6 @@
 package org.practice.pm_check;
 
-public class Parser {
+public class MyParser {
     static AirPollution ParseData(String str){
         AirPollution data = new AirPollution();
 
