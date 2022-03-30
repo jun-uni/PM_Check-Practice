@@ -7,7 +7,7 @@ public class AirPollution {
     PollutionData pm25_;    //미세먼지 PM 2.5
     PollutionData o3_;      //오존
     PollutionData khai_;    //통합대기환경
-    PollutionData no2_;
+    PollutionData no2_;     //이산화질소
     private String data_time_;
 
     AirPollution(){
